@@ -1,0 +1,18 @@
+{
+  "branch": "main",
+  "depends_recipe": "satipclient",
+  "description_control": "Satip Client",
+  "description_recipe": "Satip Client setup",
+  "history_source_dir": "SatipClient",
+  "internal_package_name": "enigma2-plugin-systemplugins-satipclient",
+  "module_dir_name": "SatipClient",
+  "output_subdir": "SatipClient",
+  "package_name": "enigma2-plugin-systemplugins-satipclient",
+  "plugin_src_rel": "SatipClient",
+  "python_package": "SatipClient",
+  "rdepends_recipe": "satipclient",
+  "replaces": "enigma2-plugin-extensions-satipclient",
+  "repo_name": "SatipClient",
+  "rrecommends": "",
+  "rreplaces": ""
+}
