@@ -1,8 +1,6 @@
-from __future__ import print_function
  # -*- coding: utf-8 -*-
 from Components.Language import language
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS, SCOPE_LANGUAGE
-import os
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 import gettext
 
 PluginLanguageDomain = "SatipClient"
