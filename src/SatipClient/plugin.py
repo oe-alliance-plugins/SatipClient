@@ -1,7 +1,7 @@
 from . import _
 from Screens.Screen import Screen
 from Components.ConfigList import ConfigListScreen
-from Components.config import config, ConfigSubsection, ConfigSelection, getConfigListEntry
+from Components.config import ConfigSubsection, ConfigSelection, getConfigListEntry
 from Components.ActionMap import ActionMap
 from Screens.MessageBox import MessageBox
 from Components.Sources.StaticText import StaticText
@@ -23,7 +23,6 @@ import os
 import copy
 
 from six.moves import http_client
-from six import PY2
 
 
 def isEmpty(x):
@@ -62,7 +61,7 @@ class SSDPServerDiscovery(DatagramProtocol):
 		self.port = reactor.listenUDP(0, self, interface=iface)
 		if self.port is not None:
 			print("Sending M-SEARCH...")
-			self.port.write(MS if PY2 else bytes(MS, 'utf-8'), (SSDP_ADDR, SSDP_PORT))
+			self.port.write(bytes(MS, 'utf-8'), (SSDP_ADDR, SSDP_PORT))
 
 	def stop_msearch(self):
 		if self.port is not None:
@@ -141,8 +140,7 @@ class SATIPDiscovery:
 
 	def dataParse(self, data):
 		serverData = {}
-		if not PY2:
-			data = data.decode("UTF-8")
+		data = data.decode("UTF-8")
 		for line in data.splitlines():
 			#print("[*] line : ", line)
 			if line.find(':') != -1:
@@ -167,7 +165,7 @@ class SATIPDiscovery:
 					child = findChild(pElem, tag, namespace)
 					if child is not None:
 						return child.text
-			except:
+			except Exception:
 				pass
 
 			return None
@@ -179,7 +177,7 @@ class SATIPDiscovery:
 					child = findChild(pElem, tag, namespace_2)
 					if child is not None:
 						return child.text
-			except:
+			except Exception:
 				pass
 
 			return None
@@ -745,8 +743,8 @@ class SATIPClient(Screen):
 
 	def sortVtunerConfig(self):
 		# FIXME What should be sorted here ???
-		if PY2:
-			self.vtunerConfig.sort(reverse=True)
+		# self.vtunerConfig.sort(reverse=True)
+		pass
 
 	def saveConfig(self):
 		data = ""
@@ -792,7 +790,7 @@ class SATIPClient(Screen):
 
 					try:
 						vtunerConfig[int(idx)]
-					except:
+					except Exception:
 						continue
 
 					data = data[1].split(',')
