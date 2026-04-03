@@ -68,7 +68,7 @@ class SSDPServerDiscovery(DatagramProtocol):
 			self.port.stopListening()
 
 	def datagramReceived(self, datagram, address):
-#		print "Received: (from %r)" % (address,)
+# print "Received: (from %r)" % (address,)
 # 		print "%s" % (datagram )
 		self.callback(datagram)
 
@@ -120,20 +120,20 @@ class SATIPDiscovery:
 		self.discoveryStopTimer.stop()
 		self.ssdp.stop_msearch()
 
-#		print "Discovery Start!"
+# print "Discovery Start!"
 		self.ssdp.send_msearch(self.getEthernetAddr())
 		self.discoveryStopTimer.start(stop_timeout, True)
 
 	def DiscoveryStop(self):
-#		print "Discovery Stop!"
+# print "Discovery Stop!"
 		self.ssdp.stop_msearch()
 
 		for x in self.updateCallback:
 			x()
 
 	def dataReceive(self, data):
-#		print "dataReceive:\n", data
-#		print "\n"
+# print "dataReceive:\n", data
+# print "\n"
 		serverData = self.dataParse(data)
 		if 'LOCATION' in serverData:
 			self.xmlParse(serverData['LOCATION'])
@@ -142,16 +142,16 @@ class SATIPDiscovery:
 		serverData = {}
 		data = data.decode("UTF-8")
 		for line in data.splitlines():
-			#print("[*] line : ", line)
+			# print("[*] line : ", line)
 			if line.find(':') != -1:
 				(attr, value) = line.split(':', 1)
 				attr = attr.strip().upper()
 				if attr not in serverData:
 					serverData[attr] = value.strip()
 
-#		for (key, value) in serverData.items():
-#			print "[%s] %s" % (key, value)
-#		print "\n"
+# for (key, value) in serverData.items():
+# print "[%s] %s" % (key, value)
+# print "\n"
 		return serverData
 
 	def xmlParse(self, location):
@@ -185,7 +185,7 @@ class SATIPDiscovery:
 		def dumpData():
 			print("\n######## SATIPSERVERDATA ########")
 			for (k, v) in SATIPSERVERDATA.items():
-#				prestr = "[%s]" % k
+# prestr = "[%s]" % k
 				prestr = ""
 				for (k2, v2) in v.items():
 					prestr2 = prestr + "[%s]" % k2
@@ -216,9 +216,9 @@ class SATIPDiscovery:
 				port = location[AAA + 1: BBB]
 				request = location[BBB:]
 
-			#print("address2 : ", address)
-			#print("port2: " , port)
-			#print("request : ", request)
+			# print("address2 : ", address)
+			# print("port2: " , port)
+			# print("request : ", request)
 
 			conn = http_client.HTTPConnection(address, int(port))
 			conn.request("GET", request)
@@ -264,7 +264,7 @@ class SATIPDiscovery:
 		for tag in tagList:
 			SATIPSERVERDATA[uuid][pTag][tag] = getAttr(root, pTag, tag, xmlns_dev)
 
-#		dumpData()
+# dumpData()
 
 	def isEmptyServerData(self):
 		return isEmpty(SATIPSERVERDATA)
@@ -441,14 +441,14 @@ class SATIPTuner(ConfigListScreen, Screen):
 
 		uuid = self.satipconfig.server.value
 
-#		ipaddress = satipdiscovery.getServerInfo(uuid, "ipaddress")
+# ipaddress = satipdiscovery.getServerInfo(uuid, "ipaddress")
 		modelDescription = satipdiscovery.getServerInfo(uuid, "modelDescription")
 		manufacturer = satipdiscovery.getServerInfo(uuid, "manufacturer")
-#		specversion = "%s.%s" % (satipdiscovery.getServerInfo(uuid, "major"), satipdiscovery.getServerInfo(uuid, "minor"))
+# specversion = "%s.%s" % (satipdiscovery.getServerInfo(uuid, "major"), satipdiscovery.getServerInfo(uuid, "minor"))
 		modelURL = satipdiscovery.getServerInfo(uuid, "modelURL")
 		presentationURL = satipdiscovery.getServerInfo(uuid, "presentationURL")
-#		satipcap = satipdiscovery.getServerInfo(uuid, "X_SATIPCAP")
-#		serialNumber = satipdiscovery.getServerInfo(uuid, "serialNumber")
+# satipcap = satipdiscovery.getServerInfo(uuid, "X_SATIPCAP")
+# serialNumber = satipdiscovery.getServerInfo(uuid, "serialNumber")
 
 		capability = self.getCapability(uuid)
 		satipcap_list = []
@@ -474,10 +474,10 @@ class SATIPTuner(ConfigListScreen, Screen):
 		for choice in currentConfig.choices.choices:
 			text_list.append(choice[1])
 
-#		text = ",".join(text_list)
+# text = ",".join(text_list)
 		text = _("Select") + " : " + ",".join(text_list)
 
-#		self["choices"].setText("Choices : \n%s" % (text))
+# self["choices"].setText("Choices : \n%s" % (text))
 		self["choices"].setText(text)
 
 	def getCapability(self, uuid):
@@ -508,11 +508,11 @@ class SATIPTuner(ConfigListScreen, Screen):
 
 			vtuner = self.current_satipConfig[int(idx)]
 			if vtuner["vtuner_type"] == "satip_client" and vtuner["uuid"] == uuid and vtuner["tuner_type"] == tunertype:
-#				print "[checkTunerCapacity] tuner %d use type %s" % (int(idx), tunertype)
+# print "[checkTunerCapacity] tuner %d use type %s" % (int(idx), tunertype)
 				t_count += 1
 
-#		print "[checkTunerCapacity] capability : ", capability
-#		print "[checkTunerCapacity] t_cap : %d, t_count %d" % (t_cap, t_count)
+# print "[checkTunerCapacity] capability : ", capability
+# print "[checkTunerCapacity] t_cap : %d, t_count %d" % (t_cap, t_count)
 
 		if int(t_cap) > t_count:
 			return True
@@ -673,8 +673,8 @@ class SATIPClient(Screen):
 			self.close()
 
 	def createSetup(self):
-#		print "vtunerIndex : ", self.vtunerIndex
-#		print "vtunerConfig : ", self.vtunerConfig
+# print "vtunerIndex : ", self.vtunerIndex
+# print "vtunerConfig : ", self.vtunerConfig
 		self.configList = []
 		for vtuner_idx in self.vtunerIndex:
 			vtuner = self.vtunerConfig[int(vtuner_idx)]
@@ -704,7 +704,7 @@ class SATIPClient(Screen):
 				)
 
 			self.configList.append(entry)
-#		self.configList.sort()
+# self.configList.sort()
 		self["vtunerList"].setList(self.configList)
 
 	def keyDisable(self):
@@ -738,8 +738,8 @@ class SATIPClient(Screen):
 
 		self.sortVtunerConfig()
 		self.createSetup()
-#		else:
-#			self.keyDisable()
+# else:
+# self.keyDisable()
 
 	def sortVtunerConfig(self):
 		# FIXME What should be sorted here ???
@@ -754,7 +754,7 @@ class SATIPClient(Screen):
 			if not conf:
 				continue
 
-#			print "conf : ", conf
+# print "conf : ", conf
 
 			attr = []
 			for k in sorted(conf):
