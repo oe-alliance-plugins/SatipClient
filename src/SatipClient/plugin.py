@@ -22,7 +22,7 @@ import os
 
 import copy
 
-from six.moves import http_client
+import http.client as http_client
 
 
 def isEmpty(x):
