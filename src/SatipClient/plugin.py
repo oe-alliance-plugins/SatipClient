@@ -25,8 +25,8 @@ import copy
 import http.client as http_client
 
 
-def isEmpty(x):
-		return len(x) == 0
+def is_empty(x):
+	return len(x) == 0
 
 
 def getVtunerList():
@@ -266,8 +266,8 @@ class SATIPDiscovery:
 
 # dumpData()
 
-	def isEmptyServerData(self):
-		return isEmpty(SATIPSERVERDATA)
+	def is_empty_server_data(self):
+		return is_empty(SATIPSERVERDATA)
 
 	def getServerData(self):
 		return SATIPSERVERDATA
@@ -353,7 +353,7 @@ class SATIPTuner(ConfigListScreen, Screen):
 
 		self.onClose.append(self.OnClose)
 
-		if satipdiscovery.isEmptyServerData():
+		if satipdiscovery.is_empty_server_data():
 			self.onLayoutFinish.append(self.DiscoveryStart)
 		else:
 			self.createServerConfig()
@@ -374,14 +374,14 @@ class SATIPTuner(ConfigListScreen, Screen):
 	def discoveryEnd(self):
 		self["shortcuts"].setEnabled(True)
 		# self["config_actions"].setEnabled(True)
-		if not satipdiscovery.isEmptyServerData():
+		if not satipdiscovery.is_empty_server_data():
 			self.createServerConfig()
 			self.createSetup()
 		else:
 			self["description"].setText(_("SAT>IP server is not detected."))
 
 	def createServerConfig(self):
-		if satipdiscovery.isEmptyServerData():
+		if satipdiscovery.is_empty_server_data():
 			return
 
 		server_choices = []
@@ -430,7 +430,7 @@ class SATIPTuner(ConfigListScreen, Screen):
 				if self.vtuner_type == t:
 					type_default = t
 
-		if isEmpty(type_choices):
+		if is_empty(type_choices):
 			type_choices = [("DVB-S", _("DVB-S"))]
 
 		self.satipconfig.tunertype = ConfigSelection(default=type_default, choices=type_choices)
