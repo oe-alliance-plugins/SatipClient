@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-30 19:14+0200\n"
+"POT-Creation-Date: 2026-04-08 10:12+0200\n"
 "PO-Revision-Date: 2019-05-25 11:43+0200\n"
 "Last-Translator: openspateam <openspateam@gmail.com>\n"
 "Language-Team: \n"
@@ -14,95 +14,124 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: ../plugin.py:336
 msgid " "
 msgstr " "
 
+#: ../plugin.py:332 ../plugin.py:603
 msgid "Cancel"
 msgstr "Cancel·lar"
 
+#: ../plugin.py:434
 msgid "DVB-S"
 msgstr "DVB-S"
 
+#: ../plugin.py:462
 msgid "Description"
 msgstr "Descripció"
 
+#: ../plugin.py:606
 msgid "Disable"
 msgstr "Desactivar"
 
+#: ../plugin.py:334
 msgid "Discover"
 msgstr "Descobrir"
 
+#: ../plugin.py:686
 #, python-format
 msgid "IP : %s"
 msgstr "IP : %s"
 
+#: ../plugin.py:463
 msgid "Manufacturer"
 msgstr "Fabricant"
 
+#: ../plugin.py:631
 msgid "No vtuner found."
 msgstr "Cap vtuner trobat."
 
+#: ../plugin.py:333
 msgid "Ok"
 msgstr "OK"
 
+#: ../plugin.py:671
 msgid "Really close without saving settings?"
 msgstr "Tancar sense guardar els canvis?"
 
+#: ../plugin.py:818 ../plugin.py:824
 msgid "SAT>IP Client"
 msgstr "Client SAT>IP"
 
+#: ../plugin.py:599
 msgid "SAT>IP Client Setup"
 msgstr "Configuració client SAT>IP"
 
+#: ../plugin.py:324
 msgid "SAT>IP Client Tuner Setup"
 msgstr "Configuració sintonitzador client SAT>IP"
 
+#: ../plugin.py:824
 msgid "SAT>IP Client attached to vtuner."
 msgstr "Client SAT>IP unit a vtuner."
 
+#: ../plugin.py:688
 #, python-format
 msgid "SAT>IP SERVER : %s"
 msgstr "SERVIDOR SAT>IP : %s"
 
+#: ../plugin.py:406
 msgid "SAT>IP Server : "
 msgstr "Servidor SAT>IP : "
 
+#: ../plugin.py:410
 msgid "SAT>IP Tuner Type : "
 msgstr "Tipus sintonitzador SAT>IP : "
 
+#: ../plugin.py:371
 #, python-format
 msgid "SAT>IP server discovering for %d seconds..."
 msgstr "Descobrint servidor SAT>IP durant %d segons..."
 
+#: ../plugin.py:381
 msgid "SAT>IP server is not detected."
 msgstr "No s'ha detectat cap servidor SAT>IP "
 
+#: ../plugin.py:604
 msgid "Save"
 msgstr "Guadar"
 
+#: ../plugin.py:478
 msgid "Select"
 msgstr "Sel·leccionar"
 
+#: ../plugin.py:607
 msgid "Select tuner and press setup key (Yellow)"
 msgstr "Sel·lecciona sintonitzador i prem botó Ajustos (groc)"
 
+#: ../plugin.py:543
 msgid "Server capacity is fulled."
 msgstr "Capacitat del servidor plena."
 
+#: ../plugin.py:605
 msgid "Setup"
 msgstr "Ajustos"
 
+#: ../plugin.py:335
 msgid "Starting..."
 msgstr "Iniciant..."
 
+#: ../plugin.py:687
 #, python-format
 msgid "TUNER TYPE : %s"
 msgstr "TIPUS SINTONITZADOR : %s"
 
+#: ../plugin.py:685 ../plugin.py:697
 #, python-format
 msgid "TYPE : %s"
 msgstr "TIPUS : %s"
 
+#: ../plugin.py:684 ../plugin.py:696
 #, python-format
 msgid "VIRTUAL TUNER %s"
 msgstr "SINTONITZADOR VIRTUAL %s"

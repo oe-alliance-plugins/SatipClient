@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SatipClient oe-alliance\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-30 19:14+0200\n"
+"POT-Creation-Date: 2026-04-08 10:12+0200\n"
 "PO-Revision-Date: 2017-07-06 07:31+0300\n"
 "Last-Translator: Vytenis P. <vyteniui@gmail.com>\n"
 "Language-Team: Vytenis P.\n"
@@ -20,95 +20,124 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
+#: ../plugin.py:336
 msgid " "
 msgstr ""
 
+#: ../plugin.py:332 ../plugin.py:603
 msgid "Cancel"
 msgstr "Atšaukti"
 
+#: ../plugin.py:434
 msgid "DVB-S"
 msgstr "DVB-S"
 
+#: ../plugin.py:462
 msgid "Description"
 msgstr "Aprašymas"
 
+#: ../plugin.py:606
 msgid "Disable"
 msgstr "Išjungti"
 
+#: ../plugin.py:334
 msgid "Discover"
 msgstr "Surasti"
 
+#: ../plugin.py:686
 #, python-format
 msgid "IP : %s"
 msgstr "IP : %s"
 
+#: ../plugin.py:463
 msgid "Manufacturer"
 msgstr "Gamintojas"
 
+#: ../plugin.py:631
 msgid "No vtuner found."
 msgstr ""
 
+#: ../plugin.py:333
 msgid "Ok"
 msgstr "Gerai"
 
+#: ../plugin.py:671
 msgid "Really close without saving settings?"
 msgstr "Ar tikrai uždaryti langą, neišsaugant nuostatų?"
 
+#: ../plugin.py:818 ../plugin.py:824
 msgid "SAT>IP Client"
 msgstr "SAT>IP klientas"
 
+#: ../plugin.py:599
 msgid "SAT>IP Client Setup"
 msgstr "SAT>IP kliento sąranka"
 
+#: ../plugin.py:324
 msgid "SAT>IP Client Tuner Setup"
 msgstr "SAT>IP kliento imtuvo sąranka"
 
+#: ../plugin.py:824
 msgid "SAT>IP Client attached to vtuner."
 msgstr "SAT> IP klientas, prisijungęs prie virt. imtuvo."
 
+#: ../plugin.py:688
 #, python-format
 msgid "SAT>IP SERVER : %s"
 msgstr "SAT>IP SERVERIS : %s"
 
+#: ../plugin.py:406
 msgid "SAT>IP Server : "
 msgstr "SAT>IP Serveris : "
 
+#: ../plugin.py:410
 msgid "SAT>IP Tuner Type : "
 msgstr "SAT>IP imtuvo tipas: "
 
+#: ../plugin.py:371
 #, python-format
 msgid "SAT>IP server discovering for %d seconds..."
 msgstr "SAT>IP serverio ieškoma %d sek..."
 
+#: ../plugin.py:381
 msgid "SAT>IP server is not detected."
 msgstr "SAT>IP serverio nerasta."
 
+#: ../plugin.py:604
 msgid "Save"
 msgstr "Išsaugoti"
 
+#: ../plugin.py:478
 msgid "Select"
 msgstr "Pasirinkti"
 
+#: ../plugin.py:607
 msgid "Select tuner and press setup key (Yellow)"
 msgstr "Pasirinkite imtuvą ir spauskite 'GELTONĄ' mygtuką"
 
+#: ../plugin.py:543
 msgid "Server capacity is fulled."
 msgstr "Serverio talpa užpildyta."
 
+#: ../plugin.py:605
 msgid "Setup"
 msgstr "Sąranka"
 
+#: ../plugin.py:335
 msgid "Starting..."
 msgstr "Pradedama..."
 
+#: ../plugin.py:687
 #, python-format
 msgid "TUNER TYPE : %s"
 msgstr "IMTUVO TIPAS : %s"
 
+#: ../plugin.py:685 ../plugin.py:697
 #, python-format
 msgid "TYPE : %s"
 msgstr "TIPAS : %s"
 
+#: ../plugin.py:684 ../plugin.py:696
 #, python-format
 msgid "VIRTUAL TUNER %s"
 msgstr "VIRTUALUS IMTUVAS %s"

@@ -8,107 +8,135 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-03 07:55+0100\n"
+"POT-Creation-Date: 2026-04-08 10:12+0200\n"
 "PO-Revision-Date: 2022-11-04 19:16+0100\n"
+"Last-Translator: Massimo Pissarello <mapi68@gmail.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: Massimo Pissarello <mapi68@gmail.com>\n"
 "X-Generator: Lokalize 22.08.2\n"
 
+#: ../plugin.py:336
 msgid " "
 msgstr " "
 
+#: ../plugin.py:332 ../plugin.py:603
 msgid "Cancel"
 msgstr "Annulla"
 
+#: ../plugin.py:434
 msgid "DVB-S"
 msgstr "DVB-S"
 
+#: ../plugin.py:462
 msgid "Description"
 msgstr "Descrizione"
 
+#: ../plugin.py:606
 msgid "Disable"
 msgstr "Disattiva"
 
+#: ../plugin.py:334
 msgid "Discover"
 msgstr "Scopri"
 
+#: ../plugin.py:686
 #, python-format
 msgid "IP : %s"
 msgstr "IP: %s"
 
+#: ../plugin.py:463
 msgid "Manufacturer"
 msgstr "Produttore"
 
+#: ../plugin.py:631
 msgid "No vtuner found."
 msgstr "Nessun vtuner trovato."
 
+#: ../plugin.py:333
 msgid "Ok"
 msgstr "Ok"
 
+#: ../plugin.py:671
 msgid "Really close without saving settings?"
 msgstr "Chiudere davvero senza salvare le impostazioni?"
 
+#: ../plugin.py:818 ../plugin.py:824
 msgid "SAT>IP Client"
 msgstr "SAT>IP Client"
 
+#: ../plugin.py:599
 msgid "SAT>IP Client Setup"
 msgstr "SAT>IP Configurazione client"
 
+#: ../plugin.py:324
 msgid "SAT>IP Client Tuner Setup"
 msgstr "SAT>IP Configurazione sintonizzatore client"
 
+#: ../plugin.py:824
 msgid "SAT>IP Client attached to vtuner."
 msgstr "SAT>IP Client collegato a vtuner"
 
+#: ../plugin.py:688
 #, python-format
 msgid "SAT>IP SERVER : %s"
 msgstr "SAT>IP Server: %s"
 
+#: ../plugin.py:406
 msgid "SAT>IP Server : "
 msgstr "SAT>IP Server: "
 
+#: ../plugin.py:410
 msgid "SAT>IP Tuner Type : "
 msgstr "SAT>IP Tipo di sintonizzatore: "
 
+#: ../plugin.py:371
 #, python-format
 msgid "SAT>IP server discovering for %d seconds..."
 msgstr "SAT>IP Rilevamento server per %d secondi..."
 
+#: ../plugin.py:381
 msgid "SAT>IP server is not detected."
 msgstr "SAT>IP Server non rilevato"
 
+#: ../plugin.py:604
 msgid "Save"
 msgstr "Salva"
 
+#: ../plugin.py:478
 msgid "Select"
 msgstr "Seleziona"
 
+#: ../plugin.py:607
 msgid "Select tuner and press setup key (Yellow)"
-msgstr ""
-"Seleziona il sintonizzatore e premi il tasto di configurazione (GIALLO)"
+msgstr "Seleziona il sintonizzatore e premi il tasto di configurazione (GIALLO)"
 
+#: ../plugin.py:543
 msgid "Server capacity is fulled."
 msgstr "La capacità del server è esaurita."
 
+#: ../plugin.py:605
 msgid "Setup"
 msgstr "Impostazioni"
 
+#: ../plugin.py:335
 msgid "Starting..."
 msgstr "Avviando..."
 
+#: ../plugin.py:687
 #, python-format
 msgid "TUNER TYPE : %s"
 msgstr "TIPO DI SINTONIZZATORE: %s"
 
+#: ../plugin.py:685 ../plugin.py:697
 #, python-format
 msgid "TYPE : %s"
 msgstr "TIPO: %s"
 
+#: ../plugin.py:684 ../plugin.py:696
 #, python-format
 msgid "VIRTUAL TUNER %s"
 msgstr "SINTONIZZATORE VIRTUALE %s"

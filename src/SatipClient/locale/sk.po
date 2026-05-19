@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-16 19:01+0430\n"
+"POT-Creation-Date: 2026-04-08 10:12+0200\n"
 "PO-Revision-Date: 2019-10-24 20:10\n"
 "Last-Translator: Ladislav Zilizi, zilizila@gmail.com\n"
 "Language-Team: \n"
@@ -14,95 +14,124 @@ msgstr ""
 "X-Poedit-Basepath: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: ../plugin.py:336
 msgid " "
 msgstr " "
 
+#: ../plugin.py:332 ../plugin.py:603
 msgid "Cancel"
 msgstr "Zrušiť"
 
+#: ../plugin.py:434
 msgid "DVB-S"
 msgstr "DVB-S"
 
+#: ../plugin.py:462
 msgid "Description"
 msgstr "Popis"
 
+#: ../plugin.py:606
 msgid "Disable"
 msgstr "Deaktivovať"
 
+#: ../plugin.py:334
 msgid "Discover"
 msgstr "Vyhľadať"
 
+#: ../plugin.py:686
 #, python-format
 msgid "IP : %s"
 msgstr "IP : %s"
 
+#: ../plugin.py:463
 msgid "Manufacturer"
 msgstr "Výrobca"
 
+#: ../plugin.py:631
 msgid "No vtuner found."
 msgstr "Žiadny vTuner nebol nájdený."
 
+#: ../plugin.py:333
 msgid "Ok"
 msgstr "OK"
 
+#: ../plugin.py:671
 msgid "Really close without saving settings?"
 msgstr "Naozaj zatvoriť bez uloženia nastavení?"
 
+#: ../plugin.py:818 ../plugin.py:824
 msgid "SAT>IP Client"
 msgstr "SAT>IP Client"
 
+#: ../plugin.py:599
 msgid "SAT>IP Client Setup"
 msgstr "Nastavenie SAT>IP Clienta"
 
+#: ../plugin.py:324
 msgid "SAT>IP Client Tuner Setup"
 msgstr "Nastavenie SAT>IP Client Tunera"
 
+#: ../plugin.py:824
 msgid "SAT>IP Client attached to vtuner."
 msgstr "SAT>IP Client pripojený k Vtuneru."
 
+#: ../plugin.py:688
 #, python-format
 msgid "SAT>IP SERVER : %s"
 msgstr "SAT>IP SERVER : %s"
 
+#: ../plugin.py:406
 msgid "SAT>IP Server : "
 msgstr "SAT>IP Server : "
 
+#: ../plugin.py:410
 msgid "SAT>IP Tuner Type : "
 msgstr "SAT>IP Tuner Typ : "
 
+#: ../plugin.py:371
 #, python-format
 msgid "SAT>IP server discovering for %d seconds..."
 msgstr "SAT>IP Server-vyhľadanie za %d sekúnd..."
 
+#: ../plugin.py:381
 msgid "SAT>IP server is not detected."
 msgstr "SAT>IP Server nebol nájdený."
 
+#: ../plugin.py:604
 msgid "Save"
 msgstr "Uložiť"
 
+#: ../plugin.py:478
 msgid "Select"
 msgstr "Vybrať"
 
+#: ../plugin.py:607
 msgid "Select tuner and press setup key (Yellow)"
 msgstr "Vyberte tuner a stlačte (Žlté) pre Nastavenie"
 
+#: ../plugin.py:543
 msgid "Server capacity is fulled."
 msgstr "Kapacita servera je naplnená."
 
+#: ../plugin.py:605
 msgid "Setup"
 msgstr "Nastavenie"
 
+#: ../plugin.py:335
 msgid "Starting..."
 msgstr "Spustenie..."
 
+#: ../plugin.py:687
 #, python-format
 msgid "TUNER TYPE : %s"
 msgstr "TUNER TYP : %s"
 
+#: ../plugin.py:685 ../plugin.py:697
 #, python-format
 msgid "TYPE : %s"
 msgstr "TYP : %s"
 
+#: ../plugin.py:684 ../plugin.py:696
 #, python-format
 msgid "VIRTUAL TUNER %s"
 msgstr "VIRTUAL TUNER %s"
