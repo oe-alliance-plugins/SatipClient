@@ -1,7 +1,7 @@
 from . import _
 from Screens.Screen import Screen
 from Components.ConfigList import ConfigListScreen
-from Components.config import ConfigSubsection, ConfigSelection, getConfigListEntry
+from Components.config import ConfigSubsection, ConfigSelection, ConfigText, ConfigYesNo, getConfigListEntry
 from Components.ActionMap import ActionMap
 from Screens.MessageBox import MessageBox
 from Components.Sources.StaticText import StaticText
@@ -329,6 +329,20 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.vtuner_type = vtuner_type
 		self.current_satipConfig = current_satipConfig
 
+		current_vtuner = {}
+		try:
+			current_vtuner = self.current_satipConfig[int(self.vtuner_idx)]
+		except Exception:
+			pass
+
+		self.port_default = current_vtuner.get("port", "554")
+		if not self.port_default:
+			self.port_default = "554"
+
+		self.tcpdata_default = (current_vtuner.get("tcpdata") == "1")
+		self.force_plts_default = (current_vtuner.get("force_plts") == "1")
+		self.fe_default = current_vtuner.get("fe", "none")
+
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Ok"))
 		self["key_yellow"] = StaticText(_("Discover"))
@@ -410,6 +424,24 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.type_entry = getConfigListEntry(_("SAT>IP Tuner Type : "), self.satipconfig.tunertype)
 		self.list.append(self.type_entry)
 
+		self.satipconfig.port = ConfigText(default=self.port_default, fixed_size=False)
+		self.port_entry = getConfigListEntry(_("RTSP Port : "), self.satipconfig.port)
+		self.list.append(self.port_entry)
+
+		self.satipconfig.tcpdata = ConfigYesNo(default=self.tcpdata_default)
+		self.tcpdata_entry = getConfigListEntry(_("Use TCP Data : "), self.satipconfig.tcpdata)
+		self.list.append(self.tcpdata_entry)
+
+		self.satipconfig.force_plts = ConfigYesNo(default=self.force_plts_default)
+		self.force_plts_entry = getConfigListEntry(_("Force PLTS : "), self.satipconfig.force_plts)
+		self.list.append(self.force_plts_entry)
+
+		fe_choices = [("none", _("Auto")), ("0", "0"), ("1", "1"), ("2", "2"), ("3", "3"), ("4", "4"), ("5", "5"), ("6", "6"), ("7", "7")]
+		fe_def = self.fe_default if self.fe_default in [x[0] for x in fe_choices] else "none"
+		self.satipconfig.fe = ConfigSelection(default=fe_def, choices=fe_choices)
+		self.fe_entry = getConfigListEntry(_("Force FE (Adapter) : "), self.satipconfig.fe)
+		self.list.append(self.fe_entry)
+
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
 
@@ -470,15 +502,15 @@ class SATIPTuner(ConfigListScreen, Screen):
 
 	def showChoices(self):
 		currentConfig = self["config"].getCurrent()[1]
-		text_list = []
-		for choice in currentConfig.choices.choices:
-			text_list.append(choice[1])
+		if hasattr(currentConfig, 'choices') and hasattr(currentConfig.choices, 'choices'):
+			text_list = []
+			for choice in currentConfig.choices.choices:
+				text_list.append(str(choice[1]))
 
-# text = ",".join(text_list)
-		text = _("Select") + " : " + ",".join(text_list)
-
-# self["choices"].setText("Choices : \n%s" % (text))
-		self["choices"].setText(text)
+			text = _("Select") + " : " + ",".join(text_list)
+			self["choices"].setText(text)
+		else:
+			self["choices"].setText("")
 
 	def getCapability(self, uuid):
 		capability = {'DVB-S': 0, 'DVB-C': 0, 'DVB-T': 0}
@@ -549,6 +581,11 @@ class SATIPTuner(ConfigListScreen, Screen):
 			data['desc'] = satipdiscovery.getServerInfo(uuid, "modelName")
 			data['tuner_type'] = tunertype
 			data['uuid'] = uuid
+			data['port'] = self.satipconfig.port.value if self.satipconfig.port.value else "554"
+			data['tcpdata'] = "1" if self.satipconfig.tcpdata.value else "0"
+			data['force_plts'] = "1" if self.satipconfig.force_plts.value else "0"
+			if self.satipconfig.fe.value and self.satipconfig.fe.value != "none":
+				data['fe'] = str(self.satipconfig.fe.value)
 
 			self.close(data)
 
@@ -735,6 +772,22 @@ class SATIPClient(Screen):
 			vtuner['desc'] = data['desc']
 			vtuner['uuid'] = data['uuid']
 			vtuner['tuner_type'] = data['tuner_type']
+			if 'port' in data and data['port']:
+				vtuner['port'] = data['port']
+			elif 'port' in vtuner:
+				del vtuner['port']
+			if 'tcpdata' in data and data['tcpdata'] == "1":
+				vtuner['tcpdata'] = "1"
+			elif 'tcpdata' in vtuner:
+				del vtuner['tcpdata']
+			if 'force_plts' in data and data['force_plts'] == "1":
+				vtuner['force_plts'] = "1"
+			elif 'force_plts' in vtuner:
+				del vtuner['force_plts']
+			if 'fe' in data and data['fe'] and data['fe'] != "none":
+				vtuner['fe'] = data['fe']
+			elif 'fe' in vtuner:
+				del vtuner['fe']
 
 		self.sortVtunerConfig()
 		self.createSetup()
@@ -794,8 +847,6 @@ class SATIPClient(Screen):
 						continue
 
 					data = data[1].split(',')
-					if len(data) != 5:
-						continue
 
 					for x in data:
 						s = x.split(':')

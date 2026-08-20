@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: enigma2-plugins 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 10:12+0200\n"
+"POT-Creation-Date: 2026-08-20 07:02-0700\n"
 "PO-Revision-Date: 2019-11-12 20:34+0000\n"
 "Last-Translator: @Kos\n"
 "Language-Team: Special for OpenATV\n"
@@ -13,56 +13,72 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 2.2.4\n"
 
-#: ../plugin.py:336
+#: ../plugin.py:350
 msgid " "
 msgstr ""
 
-#: ../plugin.py:332 ../plugin.py:603
+#: ../plugin.py:439
+msgid "Auto"
+msgstr ""
+
+#: ../plugin.py:346 ../plugin.py:640
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../plugin.py:434
+#: ../plugin.py:466
 msgid "DVB-S"
 msgstr "DVB-S"
 
-#: ../plugin.py:462
+#: ../plugin.py:494
 msgid "Description"
 msgstr "Opis"
 
-#: ../plugin.py:606
+#: ../plugin.py:643
 msgid "Disable"
 msgstr "Wyłącz"
 
-#: ../plugin.py:334
+#: ../plugin.py:348
 msgid "Discover"
 msgstr "Odkryj"
 
-#: ../plugin.py:686
+#: ../plugin.py:442
+msgid "Force FE (Adapter) : "
+msgstr ""
+
+#: ../plugin.py:436
+msgid "Force PLTS : "
+msgstr ""
+
+#: ../plugin.py:723
 #, python-format
 msgid "IP : %s"
 msgstr "IP : %s"
 
-#: ../plugin.py:463
+#: ../plugin.py:495
 msgid "Manufacturer"
 msgstr "Producent"
 
-#: ../plugin.py:631
+#: ../plugin.py:668
 msgid "No vtuner found."
 msgstr "Nie znaleziono vtuner."
 
-#: ../plugin.py:333
+#: ../plugin.py:347
 msgid "Ok"
 msgstr "Zapisz"
 
-#: ../plugin.py:671
+#: ../plugin.py:428
+msgid "RTSP Port : "
+msgstr ""
+
+#: ../plugin.py:708
 msgid "Really close without saving settings?"
 msgstr "Naprawdę zamknąć bez zapisywania ustawień?"
 
-#: ../plugin.py:818 ../plugin.py:824
+#: ../plugin.py:869 ../plugin.py:875
 msgid "SAT>IP Client"
 msgstr "SAT>IP Client"
 
-#: ../plugin.py:599
+#: ../plugin.py:636
 msgid "SAT>IP Client Setup"
 msgstr "SAT>IP Client Ustawienia"
 
@@ -70,67 +86,71 @@ msgstr "SAT>IP Client Ustawienia"
 msgid "SAT>IP Client Tuner Setup"
 msgstr "SAT>IP Client Ustawienia Tunera"
 
-#: ../plugin.py:824
+#: ../plugin.py:875
 msgid "SAT>IP Client attached to vtuner."
 msgstr "SAT>IP Client dołączony do vtuner."
 
-#: ../plugin.py:688
+#: ../plugin.py:725
 #, python-format
 msgid "SAT>IP SERVER : %s"
 msgstr "SAT>IP SERVER : %s"
 
-#: ../plugin.py:406
+#: ../plugin.py:420
 msgid "SAT>IP Server : "
 msgstr "SAT>IP Server : "
 
-#: ../plugin.py:410
+#: ../plugin.py:424
 msgid "SAT>IP Tuner Type : "
 msgstr "SAT>IP Typ tunera : "
 
-#: ../plugin.py:371
+#: ../plugin.py:385
 #, python-format
 msgid "SAT>IP server discovering for %d seconds..."
 msgstr "SAT>IP wykrywanie serwera przez %d sekund ..."
 
-#: ../plugin.py:381
+#: ../plugin.py:395
 msgid "SAT>IP server is not detected."
 msgstr "SAT>IP serwer nie został wykryty."
 
-#: ../plugin.py:604
+#: ../plugin.py:641
 msgid "Save"
 msgstr "Zapisz"
 
-#: ../plugin.py:478
+#: ../plugin.py:510
 msgid "Select"
 msgstr "Wybierz"
 
-#: ../plugin.py:607
+#: ../plugin.py:644
 msgid "Select tuner and press setup key (Yellow)"
 msgstr "Wybierz tuner i naciśnij przycisk konfiguracji (żółty)"
 
-#: ../plugin.py:543
+#: ../plugin.py:575
 msgid "Server capacity is fulled."
 msgstr "Pojemność serwera jest pełna."
 
-#: ../plugin.py:605
+#: ../plugin.py:642
 msgid "Setup"
 msgstr "Ustawienia"
 
-#: ../plugin.py:335
+#: ../plugin.py:349
 msgid "Starting..."
 msgstr "Uruchamianie…"
 
-#: ../plugin.py:687
+#: ../plugin.py:724
 #, python-format
 msgid "TUNER TYPE : %s"
 msgstr "TYP TUNERA : %s"
 
-#: ../plugin.py:685 ../plugin.py:697
+#: ../plugin.py:722 ../plugin.py:734
 #, python-format
 msgid "TYPE : %s"
 msgstr "TYP : %s"
 
-#: ../plugin.py:684 ../plugin.py:696
+#: ../plugin.py:432
+msgid "Use TCP Data : "
+msgstr ""
+
+#: ../plugin.py:721 ../plugin.py:733
 #, python-format
 msgid "VIRTUAL TUNER %s"
 msgstr "WIRTUALNY TUNER %s"
