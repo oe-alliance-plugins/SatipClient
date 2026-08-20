@@ -1,28 +1,23 @@
-from . import _
-from Screens.Screen import Screen
-from Components.ConfigList import ConfigListScreen
-from Components.config import ConfigSubsection, ConfigSelection, ConfigText, ConfigYesNo, getConfigListEntry
-from Components.ActionMap import ActionMap
-from Screens.MessageBox import MessageBox
-from Components.Sources.StaticText import StaticText
-from Plugins.Plugin import PluginDescriptor
-
-from Components.Sources.List import List
-
-from enigma import eTimer
-from Screens.Standby import TryQuitMainloop
-from Components.Network import iNetwork
-
+import copy
+import glob
+import http.client as http_client
+import os
 import xml.etree.cElementTree
+from enigma import eTimer
+from Components.ActionMap import ActionMap
+from Components.config import ConfigSelection, ConfigSubsection, ConfigText, ConfigYesNo, getConfigListEntry
+from Components.ConfigList import ConfigListScreen
+from Components.Network import iNetwork
+from Components.Sources.List import List
+from Components.Sources.StaticText import StaticText
+from Screens.MessageBox import MessageBox
+from Screens.Screen import Screen
+from Screens.Standby import TryQuitMainloop
 from twisted.internet import reactor
 from twisted.internet.protocol import DatagramProtocol
+from Plugins.Plugin import PluginDescriptor
 
-import glob
-import os
-
-import copy
-
-import http.client as http_client
+from . import _
 
 
 def is_empty(x):
@@ -339,8 +334,8 @@ class SATIPTuner(ConfigListScreen, Screen):
 		if not self.port_default:
 			self.port_default = "554"
 
-		self.tcpdata_default = (current_vtuner.get("tcpdata") == "1")
-		self.force_plts_default = (current_vtuner.get("force_plts") == "1")
+		self.tcpdata_default = current_vtuner.get("tcpdata") == "1"
+		self.force_plts_default = current_vtuner.get("force_plts") == "1"
 		self.fe_default = current_vtuner.get("fe", "none")
 
 		self["key_red"] = StaticText(_("Cancel"))
