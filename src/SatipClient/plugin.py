@@ -24,6 +24,19 @@ def is_empty(x):
 	return len(x) == 0
 
 
+def clean_caids(value):
+	# a config line is split on ',' and ':', so a caid list can use neither
+	out = []
+	for caid in value.replace(",", ";").replace(":", ";").split(";"):
+		caid = caid.strip()
+		if caid[:2].lower() == "0x":
+			caid = caid[2:]
+		caid = "".join(c for c in caid if c in "0123456789abcdefABCDEF")
+		if caid:
+			out.append(caid)
+	return ";".join(out)
+
+
 def getVtunerList():
 	data = []
 	for x in glob.glob('/dev/misc/vtuner*'):
@@ -337,6 +350,9 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.tcpdata_default = current_vtuner.get("tcpdata") == "1"
 		self.force_plts_default = current_vtuner.get("force_plts") == "1"
 		self.fe_default = current_vtuner.get("fe", "none")
+		self.ca_pids_default = current_vtuner.get("ca_pids") == "1"
+		self.ca_emm_default = current_vtuner.get("ca_emm", "1") == "1"
+		self.ca_caids_default = current_vtuner.get("ca_caids", "")
 
 		self["key_red"] = StaticText(_("Cancel"))
 		self["key_green"] = StaticText(_("Ok"))
@@ -436,6 +452,18 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.satipconfig.fe = ConfigSelection(default=fe_def, choices=fe_choices)
 		self.fe_entry = getConfigListEntry(_("Force FE (Adapter) : "), self.satipconfig.fe)
 		self.list.append(self.fe_entry)
+
+		self.satipconfig.ca_pids = ConfigYesNo(default=self.ca_pids_default)
+		self.ca_pids_entry = getConfigListEntry(_("Request CA (ECM/EMM) pids : "), self.satipconfig.ca_pids)
+		self.list.append(self.ca_pids_entry)
+
+		self.satipconfig.ca_emm = ConfigYesNo(default=self.ca_emm_default)
+		self.ca_emm_entry = getConfigListEntry(_("Request EMM pids : "), self.satipconfig.ca_emm)
+		self.list.append(self.ca_emm_entry)
+
+		self.satipconfig.ca_caids = ConfigText(default=self.ca_caids_default, fixed_size=False)
+		self.ca_caids_entry = getConfigListEntry(_("Limit to CAIDs (e.g. 4AFC;0500) : "), self.satipconfig.ca_caids)
+		self.list.append(self.ca_caids_entry)
 
 		self["config"].list = self.list
 		self["config"].l.setList(self.list)
@@ -581,6 +609,9 @@ class SATIPTuner(ConfigListScreen, Screen):
 			data['force_plts'] = "1" if self.satipconfig.force_plts.value else "0"
 			if self.satipconfig.fe.value and self.satipconfig.fe.value != "none":
 				data['fe'] = str(self.satipconfig.fe.value)
+			data['ca_pids'] = "1" if self.satipconfig.ca_pids.value else "0"
+			data['ca_emm'] = "1" if self.satipconfig.ca_emm.value else "0"
+			data['ca_caids'] = clean_caids(self.satipconfig.ca_caids.value)
 
 			self.close(data)
 
@@ -783,6 +814,18 @@ class SATIPClient(Screen):
 				vtuner['fe'] = data['fe']
 			elif 'fe' in vtuner:
 				del vtuner['fe']
+			if 'ca_pids' in data and data['ca_pids'] == "1":
+				vtuner['ca_pids'] = "1"
+			elif 'ca_pids' in vtuner:
+				del vtuner['ca_pids']
+			if 'ca_emm' in data and data['ca_emm'] == "0":
+				vtuner['ca_emm'] = "0"
+			elif 'ca_emm' in vtuner:
+				del vtuner['ca_emm']
+			if 'ca_caids' in data and data['ca_caids']:
+				vtuner['ca_caids'] = data['ca_caids']
+			elif 'ca_caids' in vtuner:
+				del vtuner['ca_caids']
 
 		self.sortVtunerConfig()
 		self.createSetup()
