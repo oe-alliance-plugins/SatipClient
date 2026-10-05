@@ -63,17 +63,22 @@ class SSDPServerDiscovery(DatagramProtocol):
 		self.port = None
 
 	def send_msearch(self, iface):
-		if not iface:
+		# an empty interface binds to all addresses
+		iface = iface or ""
+		try:
+			self.port = reactor.listenUDP(0, self, interface=iface)
+		except Exception as err:
+			print("[SATIPClient] Could not open the SSDP socket on '%s': %s" % (iface, err))
+			self.port = None
 			return
 
-		self.port = reactor.listenUDP(0, self, interface=iface)
-		if self.port is not None:
-			print("Sending M-SEARCH...")
-			self.port.write(bytes(MS, 'utf-8'), (SSDP_ADDR, SSDP_PORT))
+		print("[SATIPClient] Sending M-SEARCH from '%s'" % (iface or "0.0.0.0"))
+		self.port.write(bytes(MS, 'utf-8'), (SSDP_ADDR, SSDP_PORT))
 
 	def stop_msearch(self):
 		if self.port is not None:
 			self.port.stopListening()
+			self.port = None
 
 	def datagramReceived(self, datagram, address):
 # print "Received: (from %r)" % (address,)
@@ -113,13 +118,24 @@ class SATIPDiscovery:
 		self.updateCallback = []
 
 	def formatAddr(self, address):
-		if not address:
+		try:
+			address = "%d.%d.%d.%d" % tuple(address)
+		except Exception:
 			return None
 
-		return "%d.%d.%d.%d" % (address[0], address[1], address[2], address[3])
+		return None if address == "0.0.0.0" else address
 
 	def getEthernetAddr(self):
-		return self.formatAddr(iNetwork.getAdapterAttribute("eth0", "ip"))
+		# None (no eth0 or no address yet) lets the search go out on all interfaces
+		try:
+			address = self.formatAddr(iNetwork.getAdapterAttribute("eth0", "ip"))
+		except Exception as err:
+			print("[SATIPClient] Could not read the eth0 address: %s" % err)
+			address = None
+
+		if address is None:
+			print("[SATIPClient] No eth0 address, searching on all interfaces")
+		return address
 
 	def DiscoveryTimerStart(self):
 		self.discoveryStartTimer.start(10, True)
