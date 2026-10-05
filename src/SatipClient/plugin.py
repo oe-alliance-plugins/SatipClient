@@ -372,6 +372,7 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=self.session)
 		self.satipconfig = ConfigSubsection()
+		self.server_entry = None
 
 		if self.discoveryEnd not in satipdiscovery.updateCallback:
 			satipdiscovery.updateCallback.append(self.discoveryEnd)
@@ -423,8 +424,12 @@ class SATIPTuner(ConfigListScreen, Screen):
 
 		self.satipconfig.server = ConfigSelection(default=server_default, choices=server_choices)
 
+	def hasServerConfig(self):
+		# ConfigSubsection raises AttributeError for unset entries
+		return getattr(self.satipconfig, "server", None) is not None
+
 	def createSetup(self):
-		if self.satipconfig.server is None:
+		if not self.hasServerConfig():
 			return
 
 		self.list = []
@@ -491,7 +496,7 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.satipconfig.tunertype = ConfigSelection(default=type_default, choices=type_choices)
 
 	def selectionChanged(self):
-		if self.satipconfig.server is None:
+		if not self.hasServerConfig():
 			return
 
 		uuid = self.satipconfig.server.value
@@ -587,7 +592,7 @@ class SATIPTuner(ConfigListScreen, Screen):
 		self.selectionChanged()
 
 	def keySave(self):
-		if self.satipconfig.server is None:
+		if not self.hasServerConfig():
 			self.keyCancel()
 			return
 
